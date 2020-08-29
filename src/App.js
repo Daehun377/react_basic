@@ -27,9 +27,24 @@ class App extends Component {
             }
         ]
     }
-
-    //라이프사이클 함수 선언
     // 함수 선언
+    //라이프사이클 함수 선언  -> 일련의 탄생부터 죽음까지의 생명주기
+    // Render: componentWillMount() -> render() -> componentDidMount()
+    // Update componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate() -> render() -> componentDidUpdate()
+
+    componentDidMount() { //마운트 되고 나서 실행되는 함수 무조건 -  데이터 불러올 때나 토큰 체크를 할때
+        setTimeout(() => {
+            this.setState({
+                movies : [
+                    {
+                        title: "Trainspotting",
+                        poster: "https://resizing.flixster.com/OUEArjor-MbyCV6GqLU85Hk9jQI=/300x300/v1.bjs1NTQ3OTM7ajsxNzQ2NjsxMjAwOzIwMDA7MTMzMQ"
+                    },
+                    ...this.state.movies
+                ]
+            })
+        }, 5000) //5초 후 실행이 된다
+    }
 
     render() {
         //위의 것들을 다시 재선언
