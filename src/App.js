@@ -22,7 +22,7 @@ class App extends Component {
         return movies
     }
 
-    _getMovies =  async () => {
+    _getMovies =  async () => { //여기서 async를 쓰는 이유??
         const movies = await this._callApi()
         this.setState({
             movies
@@ -32,7 +32,7 @@ class App extends Component {
     _callApi = () => {
         return fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=8597e491ed6e80f0de12e349eb60ea6e&language=en-US&page=1')
             .then(potato => potato.json())
-            .then(json => json.postInfo)
+            .then(json => json.results)
             .catch(err => console.log(err))
     }
     // // 상태 선언
