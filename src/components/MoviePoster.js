@@ -10,10 +10,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import "./Movie.css";
 
 const MoviePoster = ({poster}) => {
     return (
-       <img src={poster} alt="moviePoster" />
+       <img src={poster} alt="moviePoster" className={"Movie_Poster"} />
     );
 };
 

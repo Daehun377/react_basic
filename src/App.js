@@ -12,17 +12,19 @@ class App extends Component {
 
     _renderMovies = () => {
         const movies = this.state.movies.map(movie => {
-            return <Movie
+            return (
+                <Movie
                 title={movie.title}
                 poster={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+                description={movie.overview}
                 key={movie.id}
 
-            />
+            />)
         })
         return movies
     }
 
-    _getMovies =  async () => { //여기서 async를 쓰는 이유??
+    _getMovies = async () => { //여기서 async를 쓰는 이유??
         const movies = await this._callApi()
         this.setState({
             movies
@@ -79,7 +81,7 @@ class App extends Component {
         //위의 것들을 다시 재선언
         const {movies} = this.state
         return (
-            <div className={"App"}>
+            <div className={movies ? "App" : "App_loading"}>
                 {movies ? this._renderMovies() : "Loading"}
             </div>
         );
